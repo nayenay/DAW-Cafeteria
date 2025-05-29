@@ -3,7 +3,7 @@ const router = express.Router();
 const orderController = require('../controllers/orderController');
 
 // Formulario para crear pedido
-router.get('/nuevo', orderController.showOrderForm);
+router.get('/nuevo', orderController.getOrderForm);
 
 // Crear nuevo pedido
 router.post('/nuevo', orderController.createOrder);
@@ -12,7 +12,6 @@ router.post('/nuevo', orderController.createOrder);
 router.get('/lista', orderController.listOrders);
 
 // Actualizar estatus
-router.post('/estatus/:id', orderController.updateStatus);
+router.post('/estatus/:id', orderController.markAsDelivered);
 
 module.exports = router;
-
