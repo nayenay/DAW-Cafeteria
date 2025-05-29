@@ -2,20 +2,19 @@ const express = require('express');
 const router = express.Router();
 const authController = require('../controllers/authController');
 
-// Formulario de registro
-router.get('/register', authController.register);
+// Mostrar formulario de registro
+router.get('/register', authController.showRegisterForm);
 
-// Registro de usuario
+// Procesar registro de usuario
 router.post('/register', authController.register);
 
-// Formulario de login
-router.get('/login', authController.login);
+// Mostrar formulario de login
+router.get('/login', authController.showLoginForm);
 
-// Autenticación de usuario
+// Procesar inicio de sesión
 router.post('/login', authController.login);
 
-// Cierre de sesión
+// Cerrar sesión
 router.get('/logout', authController.logout);
 
 module.exports = router;
-

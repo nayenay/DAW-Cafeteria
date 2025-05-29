@@ -37,3 +37,10 @@ exports.logout = (req, res) => {
   res.redirect('/login');
 };
 
+exports.showLoginForm = (req, res) => {
+  res.render('login'); // Asegúrate de tener views/login.ejs
+};
+
+exports.showRegisterForm = (req, res) => {
+  res.render('register'); // Asegúrate de tener views/register.ejs
+};
