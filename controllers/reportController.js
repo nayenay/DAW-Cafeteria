@@ -1,6 +1,6 @@
 const Order = require('../models/Order');
 
-exports.getDailyReport = async (req, res) => {
+exports.showReport = async (req, res) => {
   try {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -14,4 +14,5 @@ exports.getDailyReport = async (req, res) => {
     res.status(500).send('Error al generar el reporte');
   }
 };
+
 
