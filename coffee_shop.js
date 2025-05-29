@@ -28,7 +28,7 @@ function calcularPrecio() {
 
   const precioBase = preciosBase[bebida];
   const extraTamaño = ajusteTamaño[tamaño];
-  const extraShots = (shots - 1) * 3; // Primer shot incluido, los demás cuestan
+  const extraShots = (shots - 1) * 3;
 
   const precioFinal = precioBase + extraTamaño + extraShots;
 
@@ -46,13 +46,31 @@ function agregarPedido(nombre, bebida, tamaño, shots, precio) {
   fila.insertCell().innerText = tamaño + ' oz';
   fila.insertCell().innerText = shots;
   fila.insertCell().innerText = '$' + precio.toFixed(2);
-  fila.insertCell().innerText = 'En preparación';
+
+  const celdaEstatus = fila.insertCell();
+  celdaEstatus.innerText = 'En preparación';
 
   const celdaEntregado = fila.insertCell();
   const checkbox = document.createElement('input');
   checkbox.type = 'checkbox';
-  checkbox.addEventListener('change', function () {
-    fila.cells[6].innerText = this.checked ? 'Entregado' : 'En preparación';
-  });
+  checkbox.disabled = true;
   celdaEntregado.appendChild(checkbox);
+
+  // Simular el cambio de estatus automático
+  setTimeout(() => {
+    celdaEstatus.innerText = 'Preparado';
+  }, 3000); // 3 segundos
+
+  setTimeout(() => {
+    celdaEstatus.innerText = 'En espera de entrega';
+    checkbox.disabled = false;
+  }, 6000); // 6 segundos
+
+  checkbox.addEventListener('change', function () {
+    if (this.checked) {
+      celdaEstatus.innerText = 'Entregado';
+    } else {
+      celdaEstatus.innerText = 'En espera de entrega';
+    }
+  });
 }
