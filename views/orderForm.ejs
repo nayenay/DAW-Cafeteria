@@ -1,1 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <%- include('partials/head') %>
+  <title>Formulario de Pedido</title>
+</head>
+<body>
+  <div class="container py-5">
+    <h2 class="text-center">Nuevo Pedido</h2>
+    <form id="order-form" method="POST" action="/orders">
+      <div class="mb-3">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" required />
+      </div>
+      <div class="mb-3">
+        <label for="drink">Tipo de café</label>
+        <select class="form-control" id="drink" name="drink" required>
+          <option value="">-- Selecciona --</option>
+          <option value="americano">Americano</option>
+          <option value="cappuccino">Capuchino</option>
+          <option value="espresso">Espresso</option>
+          <option value="latte">Con Leche</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="ounce">Tamaño</label>
+        <select class="form-control" id="ounce" name="ounce" required>
+          <option value="">-- Selecciona --</option>
+          <option value="8">Chico</option>
+          <option value="12">Alto</option>
+          <option value="16">Grande</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="shots">Shots</label>
+        <input type="number" class="form-control" id="shots" name="shots" min="1" max="5" value="1" />
+      </div>
+      <button type="submit" class="btn btn-success">Enviar Pedido</button>
+    </form>
+  </div>
+</body>
+</html>
 

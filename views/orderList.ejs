@@ -1,1 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <%- include('partials/head') %>
+  <title>Lista de Pedidos</title>
+</head>
+<body>
+  <div class="container py-5">
+    <h2 class="text-center">Pedidos Realizados</h2>
+    <table class="table table-bordered table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>Cliente</th>
+          <th>Bebida</th>
+          <th>Tamaño</th>
+          <th>Shots</th>
+          <th>Precio</th>
+          <th>Estatus</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% orders.forEach((order, index) => { %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= order.nombre %></td>
+            <td><%= order.drink %></td>
+            <td><%= order.ounce %> oz</td>
+            <td><%= order.shots %></td>
+            <td>$<%= order.precio %></td>
+            <td><%= order.estatus %></td>
+            <td>
+              <form method="POST" action="/orders/<%= order._id %>/entregado">
+                <button type="submit" class="btn btn-sm btn-success">Marcar entregado</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
 
